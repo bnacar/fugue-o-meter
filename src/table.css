@@ -1,0 +1,40 @@
+body {
+    margin: 1em;
+    font-family: Tahoma, Verdana, Arial, sans-serif;
+    font-size: 1em;
+    color: black;
+    background-color: white;
+    -webkit-text-size-adjust: 100%;
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.center {
+    text-align: center;
+}
+
+table {
+    border-spacing: 2px;
+}
+
+th, td {
+    border: 1px solid #333333;
+    padding: 10px;
+    text-align: left;
+    background-color: #f2f2f2;
+}
+
+
