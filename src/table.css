@@ -1,40 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Manufacturing+Consent&display=swap');
+
 body {
-    margin: 1em;
+    min-height: 100vh; 
+    margin: 0;
     font-family: Tahoma, Verdana, Arial, sans-serif;
     font-size: 1em;
-    color: black;
-    background-color: white;
+    background-color: #522c0d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     -webkit-text-size-adjust: 100%;
 }
 
-h1 {
-    font-size: 2em;
-    font-weight: bold;
+#mainwrap {
+    display: inline-block;
 }
 
-h2 {
-    font-size: 1.5em;
-    font-weight: bold;
+.titlewrap {
+    text-align: center;
+    border: 1px solid #111111;
+    color: #222222;
+    background-color: #e2e2d2;
+    width: 20vw;
+    min-width: 18em;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
-h3 {
-    font-size: 1.2em;
-    font-weight: bold;
+.titleitself {
+    font-family: 'Manufacturing Consent', cursive;
+    font-size: 2.5em;
 }
 
-.center {
+.spacer {
+    height: 1em;
+}
+
+table.scorecard {
+    border: 1px solid #111111;
+    border-spacing: 4px;
+    color: #444444;
+    text-align: left;
+    background-color: #222222;
+    width: 20vw;
+    min-width: 18em;
+    table-layout: auto;
+}
+
+table.scorecard *,
+table.scorecard *::before,
+table.scorecard *::after {
+    box-sizing: border-box;
+}
+
+table.scorecard th:nth-child(2),
+table.scorecard td:nth-child(2) {
+    width: 1%;
+    white-space: nowrap;
+}
+
+table.scorecard th:nth-child(3),
+table.scorecard td:nth-child(3) {
+    width: 1%;
+    white-space: nowrap;
+}
+
+th {
+    border: 1px solid #e2e2d2;
+    background-color: #e2e2d2;
+    color: #222222;
+    padding: 10px;
+}
+
+td {
+    border: 1px solid #444444;
+    padding: 10px;
+}
+
+.L {
+    text-align: left;
+}
+
+.M {
     text-align: center;
 }
 
-table {
-    border-spacing: 2px;
+.R {
+    text-align: right;
 }
 
-th, td {
-    border: 1px solid #333333;
-    padding: 10px;
-    text-align: left;
-    background-color: #f2f2f2;
+.active {
+    border: 1px solid #e2e2d2;
+    color: #e2e2d2;
+}
+
+.inactive {
+    border: 1px solid #444444;
+    color: #444444
 }
 
 

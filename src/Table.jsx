@@ -22,44 +22,75 @@ function Table() {
     return tempRows;
   };
 
+  const toggleTheme = (id, prevRows) => {
+    return prevRows.map(item => {
+      if (item.id === id) {
+        return item.hasTheme 
+          ? { ...item, hasTheme: false } 
+          : { ...item, hasTheme: true, themeCount: item.themeCount + 1 };
+      } else {
+        return item;
+      }
+    });
+  };
+
+  const toggleActive = (id, prevRows) => {
+    return prevRows.map(item => {
+      if (item.id === id) {
+        return { ...item, active: (!item.active) };
+      } else {
+        return item;
+      }
+    });
+  };
+
+  const effectMap = {
+    "Digit1": (prevRows) => swapInd(0, 1, prevRows),
+    "Digit2": (prevRows) => swapInd(1, 2, prevRows),
+    "Digit3": (prevRows) => swapInd(2, 3, prevRows),
+    "Digit4": (prevRows) => swapInd(3, 4, prevRows),
+    "Digit5": (prevRows) => swapInd(4, 5, prevRows),
+    "KeyQ": (prevRows) => toggleTheme('Sop1', prevRows),
+    "KeyW": (prevRows) => toggleTheme('Sop2', prevRows),
+    "KeyE": (prevRows) => toggleTheme('Alt', prevRows),
+    "KeyR": (prevRows) => toggleTheme('Ten1', prevRows),
+    "KeyT": (prevRows) => toggleTheme('Ten2', prevRows),
+    "KeyY": (prevRows) => toggleTheme('Bas', prevRows),
+    "KeyA": (prevRows) => toggleActive('Sop1', prevRows),
+    "KeyS": (prevRows) => toggleActive('Sop2', prevRows),
+    "KeyD": (prevRows) => toggleActive('Alt', prevRows),
+    "KeyF": (prevRows) => toggleActive('Ten1', prevRows),
+    "KeyG": (prevRows) => toggleActive('Ten2', prevRows),
+    "KeyH": (prevRows) => toggleActive('Bas', prevRows),
+    "Escape": (prevRows) => voices
+  }
+
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.code === 'Space') {
-        console.log('Space detected');
-        setRows((prevRows) => [...prevRows].sort(() => Math.random() - 0.5));
-      } else if (e.code === 'Digit1') {
-        console.log('1 detected');
-        setRows((prevRows) => swapInd(0, 1, prevRows));
-      } else if (e.code === 'Digit2') {
-        console.log('2 detected');
-        setRows((prevRows) => swapInd(1, 2, prevRows));
-      } else if (e.code === 'Digit3') {
-        console.log('3 detected');
-        setRows((prevRows) => swapInd(2, 3, prevRows));
-      } else if (e.code === 'Digit4') {
-        console.log('4 detected');
-        setRows((prevRows) => swapInd(3, 4, prevRows));
-      } else if (e.code === 'Digit5') {
-        console.log('5 detected');
-        setRows((prevRows) => swapInd(4, 5, prevRows));
-      } else {
-        setRows(voices);
+      var doThis = effectMap[e.code];
+      if (doThis) {
+        console.log(`${e.code} detected`);
+        setRows(doThis);
       }
-    };
+    }
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
   return (
     <>
-      <div id="tablewrap">
-        <h2>FUGUE-O-METER</h2>
+      <div id="mainwrap">
+        <div className="titlewrap">
+          <div className="titleitself">Fugue-O-Meter</div>
+        </div>
+        <div className="spacer"/>
         <div id="tablewrap">
-          <table id="thetable">
+          <table id="thetable" className="scorecard">
             <thead>
               <tr>
                 <th>Voice</th>
-                <th>Theme<br/>Statements</th>
+                <th>Theme</th>
+                <th>Tally</th>
               </tr>
             </thead>
             <motion.tbody layout>
@@ -72,13 +103,10 @@ function Table() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 20 }}
                     transition={{ duration: 0.2, type: 'spring', stiffness: 400, damping: 30 }}
-                    style={{ 
-                      borderBottom: '1px solid #eee',
-                      background: '#fff'
-                    }}
                   >
-                    <td>{row.name}</td>
-                    <td>{row.themeCount}</td>
+                    <td className={`L ${row.active ? 'active' : 'inactive'}`}>{row.name}</td>
+                    <td className={`M ${row.active ? 'active' : 'inactive'}`}>{row.hasTheme ? '\u{1F7E1}' : ''}</td>
+                    <td className={`R ${row.active ? 'active' : 'inactive'}`}>{row.themeCount}</td>
                   </motion.tr>
                 ))}
               </AnimatePresence>
