@@ -16,7 +16,7 @@ Run `npm install`.
 
 Run `npm run dev`.
 
-Navigate to `http://localhost:5173`.
+Navigate to `http://localhost:5173` in a browser.
 
 ## Basic Usage
 
