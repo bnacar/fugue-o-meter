@@ -8,9 +8,11 @@ Note: I have only tested this on Linux with Firefox.
 
 ## Setting Up
 
-Install Node.js if you don't have it already.
+Install the latest versions of node.js and npm if you don't have them already.
 
-Clone this repo and install dependencies.
+Clone this repo.
+
+Run `npm install`.
 
 Run `npm run dev`.
 
