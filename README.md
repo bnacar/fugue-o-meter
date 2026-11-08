@@ -1,16 +1,43 @@
-# React + Vite
+# Fugue-O-Meter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+For visualizing contrapuntal activity while listening to fugues.
+Voices are listed in a scoreboard-like table and may be highlighted or
+swapped via manual input (computer keystrokes).
 
-Currently, two official plugins are available:
+Note: I have only tested this on Linux with Firefox.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Setting Up
 
-## React Compiler
+Install Node.js if you don't have it already.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Clone this repo and install dependencies.
 
-## Expanding the ESLint configuration
+Run `npm run dev`.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Navigate to `http://localhost:5173`.
+
+## Basic Usage
+
+By default this provides a display for six voices, as in the Six Part
+Ricercar from J. S. Bach's Musical Offering. The keybindings are as
+follows:
+
+- `ASDFGH`: Toggle whether a voice is highlighted as "active".
+- `QWERTY`: Toggle whether a voice has the theme, and increment the theme tally accordingly.
+- `1-5`: Swap adjacent voices.
+- `Esc`: Reset the display.
+
+The keybindings may be changed, along with the number and names of
+voices, by editing `src/Table.jsx` accordingly.
+
+## Future Work
+
+Ideally all configuration (number of voices, names of voices,
+keybindings etc.) should be abstracted out to a `.ini` file.
+
+Eventually it would be nice to hook this up to a MIDI playback engine so
+that you could feed in a MIDI file of a fugue and it would
+highlight/swap around the voices as it plays back. This would probably
+require including some custom MIDI events in the input file to designate
+theme entrances.
+
