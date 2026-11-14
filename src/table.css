@@ -5,7 +5,9 @@ body {
     margin: 0;
     font-family: Tahoma, Verdana, Arial, sans-serif;
     font-size: 1em;
-    background-color: #522c0d;
+    background-image: url("wood.jpg");
+    background-size: cover;
+    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,7 +20,7 @@ body {
 
 .titlewrap {
     text-align: center;
-    border: 1px solid #111111;
+    border: 2px solid #111111;
     color: #222222;
     background-color: #e2e2d2;
     width: 20vw;
